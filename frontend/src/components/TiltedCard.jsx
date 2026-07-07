@@ -89,6 +89,7 @@ export default function TiltedCard({
         <div className="tilted-card-mobile-alert">This effect is not optimized for mobile. Check on desktop.</div>
       )}
 
+      {/* Overflow-hidden container to clip avatar image edges inside the squircle */}
       <motion.div
         className="tilted-card-inner"
         style={{
@@ -108,11 +109,23 @@ export default function TiltedCard({
             height: imageHeight
           }}
         />
-
-        {displayOverlayContent && overlayContent && (
-          <motion.div className="tilted-card-overlay">{overlayContent}</motion.div>
-        )}
       </motion.div>
+
+      {/* Render overlay content outside tilted-card-inner so it doesn't get clipped, but keep 3D transforms synchronized */}
+      {displayOverlayContent && overlayContent && (
+        <motion.div 
+          className="tilted-card-overlay"
+          style={{
+            rotateX,
+            rotateY,
+            scale,
+            z: 30,
+            transformStyle: 'preserve-3d'
+          }}
+        >
+          {overlayContent}
+        </motion.div>
+      )}
 
       {showTooltip && (
         <motion.figcaption
