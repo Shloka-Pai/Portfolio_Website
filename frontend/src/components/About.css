@@ -123,6 +123,9 @@
 
 /* Professional Bio Text Block - turns to purple and white on hover */
 .about-info-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   font-family: var(--sans);
   font-size: 1.28rem;
   line-height: 1.8;
@@ -134,6 +137,7 @@
   
   @media (max-width: 900px) {
     text-align: center;
+    align-items: center;
     font-size: 1.15rem;
     line-height: 1.7;
     max-width: 100%;
@@ -198,15 +202,14 @@
 /* Tech Stack Horizontal Strip Styling */
 .about-tech-stack {
   display: flex;
-  justify-content: space-between;
   align-items: center;
   width: 100%;
-  max-width: 1120px; /* Matches details grid width */
-  margin-top: 50px;
-  margin-left: auto;
-  margin-right: auto;
-  transform: translateX(-80px); /* Matches details grid translation */
+  max-width: 100%; /* Spans full width of the biography column */
+  height: 84px; /* Fixed height to fit scaled icons */
+  margin-top: 24px; /* Space below Resume button */
   pointer-events: auto; /* Clickable */
+  overflow: hidden; /* Crops scrolling items */
+  position: relative;
   
   /* Curved Box Styling */
   padding: 16px 28px;
@@ -219,17 +222,29 @@
   
   /* Details grid slides up and fades in at the end of scroll (above 72% progress) */
   opacity: clamp(0, calc((var(--scroll-progress, 0) - 0.72) * 5), 1);
-  transition: transform 0.1s ease-out, opacity 0.1s ease-out;
+  transition: opacity 0.1s ease-out;
   
   @media (max-width: 900px) {
-    margin-top: 30px;
-    transform: translateX(0);
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 16px;
+    margin-top: 24px;
+    width: 100%;
     max-width: 100%;
-    padding: 16px;
+    transform: translateX(0);
+    padding: 16px 20px;
   }
+}
+
+.tech-marquee-track {
+  display: flex;
+  gap: 24px;
+  width: max-content;
+  align-items: center;
+  animation: marquee-scroll 25s linear infinite;
+  will-change: transform;
+}
+
+/* Pause the animation on hover of the container */
+.about-tech-stack:hover .tech-marquee-track {
+  animation-play-state: paused;
 }
 
 .tech-icon-item {
@@ -241,15 +256,18 @@
   background: rgba(255, 255, 255, 0.02);
   border: 1px solid rgba(255, 255, 255, 0.05);
   border-radius: 12px;
-  transition: transform 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.25s ease, background-color 0.25s ease, border-color 0.25s ease;
+  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
   cursor: pointer;
+  flex-shrink: 0; /* Prevents squishing */
 }
 
+/* Make it bigger on hover */
 .tech-icon-item:hover {
-  transform: translateY(-4px);
-  background: rgba(255, 255, 255, 0.05);
-  border-color: rgba(112, 123, 244, 0.35); /* periwinkle hover */
-  box-shadow: 0 8px 20px rgba(112, 123, 244, 0.12);
+  transform: scale(1.22);
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(112, 123, 244, 0.45);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.3);
+  z-index: 10;
 }
 
 .tech-svg {
@@ -257,6 +275,16 @@
   height: 26px;
   display: block;
 }
+
+@keyframes marquee-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-50% - 12px)); /* Perfect half shift for gap width */
+  }
+}
+
 
 
 

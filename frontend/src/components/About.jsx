@@ -268,6 +268,9 @@ export default function About() {
     }
   ];
 
+  // Duplicate the list of icons to construct a seamless infinite loop
+  const marqueeIcons = [...techIcons, ...techIcons];
+
   return (
     <section className="about-section" id="about">
       {/* HTML5 Canvas stencil cutout that shows underlying periwinkle paint sweeps */}
@@ -318,16 +321,18 @@ export default function About() {
                 <path d="M5 12h14M12 5l7 7-7 7" />
               </svg>
             </a>
-          </div>
-        </div>
 
-        {/* Single horizontal tech stack strip aligned with the details grid width */}
-        <div className="about-tech-stack">
-          {techIcons.map((tech, idx) => (
-            <div key={idx} className="tech-icon-item" title={tech.name}>
-              {tech.svg}
+            {/* Single horizontal tech stack strip nested inside the right column so it starts after the card */}
+            <div className="about-tech-stack">
+              <div className="tech-marquee-track">
+                {marqueeIcons.map((tech, idx) => (
+                  <div key={idx} className="tech-icon-item" title={tech.name}>
+                    {tech.svg}
+                  </div>
+                ))}
+              </div>
             </div>
-          ))}
+          </div>
         </div>
       </div>
     </section>
