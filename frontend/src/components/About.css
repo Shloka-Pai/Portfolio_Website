@@ -88,19 +88,19 @@
   align-items: center;
   justify-content: center;
   width: 100%;
-  max-width: 1000px;
-  margin-top: 180px; /* Pushed further down to prevent overlap with the high header */
+  max-width: 1120px;
+  margin-top: 40px; /* Reduced further to minimize spacing */
   
   /* Details grid slides up and fades in at the end of scroll (above 72% progress) */
   opacity: clamp(0, calc((var(--scroll-progress, 0) - 0.72) * 5), 1);
-  transform: translateX(-90px) translateY(calc((1 - var(--scroll-progress, 0)) * 60px));
+  transform: translateX(-80px) translateY(calc((1 - var(--scroll-progress, 0)) * 60px));
   transition: transform 0.1s ease-out, opacity 0.1s ease-out;
   
   @media (max-width: 900px) {
     flex-direction: column;
     text-align: center;
     gap: 32px;
-    margin-top: 120px; /* Pushes further down on mobile */
+    margin-top: 25px; /* Reduced further on mobile */
     transform: translateX(0) translateY(calc((1 - var(--scroll-progress, 0)) * 60px));
   }
 }
@@ -112,10 +112,12 @@
   flex-shrink: 0;
   pointer-events: auto;
   z-index: 10;
+  transform: translateY(-30px); /* Push card slightly upwards */
   
   @media (max-width: 900px) {
     width: 260px;
     height: 320px;
+    transform: translateY(-15px); /* Push up slightly on mobile column */
   }
 }
 
@@ -126,7 +128,7 @@
   line-height: 1.8;
   color: var(--hero-subtitle-color);
   text-align: left;
-  max-width: 580px;
+  max-width: 680px;
   pointer-events: auto;
   transition: color 0.4s ease;
   
@@ -152,3 +154,44 @@
 .about-info-text:hover span {
   color: #ffffff; /* bright white */
 }
+
+/* Resume button layout and design */
+.resume-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 32px;
+  padding: 12px 28px;
+  background-color: #707bf4; /* periwinkle purple */
+  color: #ffffff !important; /* Force white text */
+  border-radius: 14px;
+  font-family: var(--sans);
+  font-size: 1.05rem;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 8px 20px rgba(112, 123, 244, 0.22);
+  pointer-events: auto; /* Clickable */
+  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.3s ease, background-color 0.3s ease;
+  
+  @media (max-width: 900px) {
+    margin-top: 24px;
+    align-self: center;
+  }
+}
+
+.resume-btn:hover {
+  background-color: #606be0;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(112, 123, 244, 0.35);
+}
+
+.resume-btn-icon {
+  width: 18px;
+  height: 18px;
+  transition: transform 0.3s ease;
+}
+
+.resume-btn:hover .resume-btn-icon {
+  transform: translateX(4px);
+}
+

@@ -145,6 +145,18 @@ export default function About() {
             <p>
               <span>4th-Year Computer Science undergrad</span> specializing in <span>AI/ML</span>. Driven by a strong foundation in <span>Data Structures & Algorithms</span> and a passion for building <span>intelligent, full-stack systems</span>. I actively participate in hackathons to build real-world projects that solve complex problems and optimize solutions.
             </p>
+
+            <a 
+              href="/resume.pdf" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="resume-btn"
+            >
+              Resume
+              <svg className="resume-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </a>
           </div>
         </div>
       </div>
