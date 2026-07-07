@@ -1,0 +1,45 @@
+/* App global styles */
+html {
+  margin: 0;
+  padding: 0;
+  background-color: #090a0e !important;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #090a0e !important;
+  overflow-x: hidden;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+
+.portfolio-app {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Pinned fullscreen viewport frame */
+.app-pinned-viewport {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 10;
+  overflow: hidden;
+  background-color: #090a0e !important;
+}
+
+/* Spacer track to create scrollbar and drive background paint transition */
+.scroll-spacer {
+  position: relative;
+  width: 100%;
+  height: 180vh; /* Scrollable track length */
+  pointer-events: none;
+  z-index: 1;
+}

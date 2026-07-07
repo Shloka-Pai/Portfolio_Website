@@ -1,0 +1,95 @@
+.tilted-card-figure {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  perspective: 1000px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+}
+
+.tilted-card-mobile-alert {
+  position: absolute;
+  top: 1rem;
+  text-align: center;
+  font-size: 0.82rem;
+  color: var(--hero-subtitle-color);
+  font-family: var(--sans);
+  display: none;
+}
+
+@media (max-width: 640px) {
+  .tilted-card-mobile-alert {
+    display: none; /* Hide warning to keep mobile layout perfectly clean */
+  }
+  .tilted-card-caption {
+    display: none;
+  }
+}
+
+.tilted-card-inner {
+  position: relative;
+  transform-style: preserve-3d;
+  background-color: var(--avatar-card-bg); /* #707bf4 periwinkle background */
+  border-radius: 48px; /* Matches high-end squircle rounded corners */
+  box-shadow: 0 35px 70px rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  overflow: visible;
+  will-change: transform;
+}
+
+.tilted-card-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Keeps transparent avatar proportions */
+  object-position: bottom center;
+  border-radius: 48px;
+  will-change: transform;
+  
+  /* Initial scale and vertical positioning matching original design */
+  transform: translateZ(0) scale(1.25) translateY(4%);
+  
+  /* Float animation inside the card container */
+  animation: avatar-float 4s infinite ease-in-out;
+}
+
+@keyframes avatar-float {
+  0%, 100% { transform: translateZ(0) scale(1.25) translateY(4%); }
+  50% { transform: translateZ(0) scale(1.26) translateY(2%); }
+}
+
+.tilted-card-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  will-change: transform;
+  transform: translateZ(30px);
+  pointer-events: none; /* Let pointer events fall through to tilt card */
+}
+
+.tilted-card-caption {
+  pointer-events: none;
+  position: absolute;
+  left: 0;
+  top: 0;
+  border-radius: 20px;
+  background-color: #eae6df; /* Matches off-white theme */
+  padding: 8px 16px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #090a0e; /* Charcoal text for contrast */
+  opacity: 0;
+  z-index: 3;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+  font-family: var(--sans);
+}
