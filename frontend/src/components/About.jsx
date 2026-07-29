@@ -1,112 +1,9 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
 import professionalImg from '../assets/professional.jpg';
 import TiltedCard from './TiltedCard';
 import './About.css';
 
 export default function About() {
-  const cutoutCanvasRef = useRef(null);
-  const scrollProgressRef = useRef(0);
-  const [isHovered, setIsHovered] = useState(false);
-  const isHoveredRef = useRef(false);
-
-  // Keep ref in sync with state for requestAnimationFrame loop
-  useEffect(() => {
-    isHoveredRef.current = isHovered;
-  }, [isHovered]);
-
-  useEffect(() => {
-    const canvas = cutoutCanvasRef.current;
-    if (!canvas) return;
-
-    const resizeCanvas = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    };
-    window.addEventListener('resize', resizeCanvas);
-    resizeCanvas();
-
-    let animationFrameId;
-
-    const drawCutout = () => {
-      const ctx = canvas.getContext('2d');
-      const width = canvas.width;
-      const height = canvas.height;
-
-      // Read current scroll progress
-      const scrollProgressStr = document.documentElement.style.getPropertyValue('--scroll-progress') || '0';
-      const targetProgress = parseFloat(scrollProgressStr);
-
-      // Smooth scroll progress lerp
-      scrollProgressRef.current += (targetProgress - scrollProgressRef.current) * 0.08;
-      const t = scrollProgressRef.current;
-      const currentHovered = isHoveredRef.current;
-
-      ctx.clearRect(0, 0, width, height);
-
-      // Only show when the transition starts (t > 0.28)
-      if (t > 0.28) {
-        // 1. Draw solid charcoal stencil layer
-        ctx.fillStyle = '#090a0e';
-        ctx.fillRect(0, 0, width, height);
-
-        // Normalize progress from [0.3, 1.0] to [0.0, 1.0]
-        const nt = Math.min(Math.max((t - 0.3) / 0.7, 0), 1.0);
-
-        ctx.save();
-        
-        // Translate to screen center + vertical offset that shifts it up to standard header height at nt=1.0
-        const targetY = width < 768 ? -130 : -250;
-        const translateYVal = nt * targetY;
-        ctx.translate(width / 2, height / 2 + translateYVal);
-
-        // Scale down (zoom out) from 14x to 1x from center
-        const scaleVal = Math.max(14 - nt * 13, 1);
-        ctx.scale(scaleVal, scaleVal);
-
-        // Configure font specs - slightly smaller font scale (10.5vw instead of 12vw)
-        const fontScale = width < 768 ? 12 : 10.5;
-        ctx.font = `900 ${fontScale}vw "Bebas Neue", sans-serif`;
-        ctx.textAlign = 'center';
-        ctx.textBaseline = 'middle';
-
-        if (currentHovered) {
-          // If hovered: Draw solid white text with a 3D drop-shadow
-          ctx.globalCompositeOperation = 'source-over';
-          
-          ctx.shadowColor = 'rgba(0, 0, 0, 0.6)';
-          ctx.shadowBlur = 20;
-          ctx.shadowOffsetX = 6;
-          ctx.shadowOffsetY = 6;
-          
-          ctx.fillStyle = '#ffffff';
-          ctx.fillText("ABOUT ME", 0, 0);
-          
-          // Reset shadow properties
-          ctx.shadowColor = 'transparent';
-        } else {
-          // If not hovered: Cut holes out of the solid charcoal layer to show purple paint underneath
-          ctx.globalCompositeOperation = 'destination-out';
-          ctx.fillStyle = '#000';
-          ctx.fillText("ABOUT ME", 0, 0);
-        }
-
-        ctx.restore();
-
-        // Reset composite operation
-        ctx.globalCompositeOperation = 'source-over';
-      }
-
-      animationFrameId = requestAnimationFrame(drawCutout);
-    };
-
-    animationFrameId = requestAnimationFrame(drawCutout);
-
-    return () => {
-      window.removeEventListener('resize', resizeCanvas);
-      cancelAnimationFrame(animationFrameId);
-    };
-  }, []);
-
   const techIcons = [
     {
       name: 'C',
@@ -166,16 +63,6 @@ export default function About() {
           <ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(60 12 12)" />
           <ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(120 12 12)" />
           <circle cx="12" cy="12" r="1.5" fill="#61DAFB" />
-        </svg>
-      )
-    },
-    {
-      name: 'CSS3',
-      svg: (
-        <svg className="tech-svg" viewBox="0 0 24 24" fill="none" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M12 2L3 5v12l9 4 9-4V5l-9-3z" fill="#1572B6" />
-          <path d="M12 5.5v12.5l5.5-2.5.5-4h-6v-2h8.5l-.5 2" stroke="#FFFFFF" strokeWidth="1.8" />
-          <path d="M12 5.5v12.5L6.5 15.5l-.5-4h2.5" stroke="#E0E0E0" strokeWidth="1.8" />
         </svg>
       )
     },
@@ -268,24 +155,13 @@ export default function About() {
     }
   ];
 
-  // Duplicate the list of icons to construct a seamless infinite loop
   const marqueeIcons = [...techIcons, ...techIcons];
 
   return (
     <section className="about-section" id="about">
-      {/* HTML5 Canvas stencil cutout that shows underlying periwinkle paint sweeps */}
-      <canvas ref={cutoutCanvasRef} className="about-cutout-canvas" />
-
       {/* Foreground content wrapper */}
       <div className="about-content">
-        {/* Invisible title layer acting purely as a hover trigger mapped exactly to canvas coordinates */}
-        <h2 
-          className="about-title"
-          onMouseEnter={() => setIsHovered(true)}
-          onMouseLeave={() => setIsHovered(false)}
-        >
-          ABOUT ME
-        </h2>
+        <h2 className="about-title">ABOUT ME</h2>
 
         <div className="about-details-grid">
           {/* Left Side: Professional Photo Card using TiltedCard */}
@@ -322,7 +198,7 @@ export default function About() {
               </svg>
             </a>
 
-            {/* Single horizontal tech stack strip nested inside the right column so it starts after the card */}
+            {/* Single tech stack horizontal marquee strip */}
             <div className="about-tech-stack">
               <div className="tech-marquee-track">
                 {marqueeIcons.map((tech, idx) => (

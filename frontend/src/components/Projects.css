@@ -1,0 +1,281 @@
+/* Projects Section Styling */
+.projects-section {
+  position: relative;
+  z-index: 20;
+  background-color: #090a0e;
+  width: 100%;
+  padding: 120px 0;
+  box-sizing: border-box;
+}
+
+.projects-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+  box-sizing: border-box;
+  
+  @media (max-width: 768px) {
+    padding: 0 24px;
+  }
+}
+
+/* Header Section */
+.projects-header {
+  text-align: center;
+  margin-bottom: 70px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.projects-subtitle {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.85rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #707bf4; /* periwinkle accent */
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.projects-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 4.5rem;
+  letter-spacing: -0.5px;
+  color: #ffffff;
+  margin: 0;
+  line-height: 1;
+  text-transform: uppercase;
+  
+  @media (max-width: 768px) {
+    font-size: 3rem;
+  }
+}
+
+.projects-header-line {
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #707bf4, transparent);
+  margin-top: 12px;
+}
+
+/* Grid Layout */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+  gap: 40px;
+  width: 100%;
+  
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+}
+
+/* Project Card */
+.project-card {
+  background: rgba(255, 255, 255, 0.015);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  border-radius: 24px;
+  overflow: hidden;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(112, 123, 244, 0.35); /* periwinkle hover */
+  background: rgba(255, 255, 255, 0.025);
+}
+
+/* Visual Showcase Panel */
+.project-visual-preview {
+  position: relative;
+  width: 100%;
+  height: 190px;
+  overflow: hidden;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.visual-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, transparent 30%, rgba(9, 10, 14, 0.85) 100%);
+  z-index: 3;
+}
+
+/* Grid overlay background to resemble neural systems / designs */
+.visual-grid-glow {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 15px 15px;
+  background-position: center;
+  z-index: 2;
+  transition: transform 0.6s ease;
+}
+
+.project-card:hover .visual-grid-glow {
+  transform: scale(1.1);
+}
+
+.visual-decoration {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.visual-decoration svg {
+  width: 60%;
+  height: auto;
+  opacity: 0.7;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.project-card:hover .visual-decoration svg {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+/* Theme Gradient Colorings for Projects */
+.project-neurosketch {
+  background: linear-gradient(135deg, #707bf4 0%, #090a0e 100%);
+}
+
+.project-synapse {
+  background: linear-gradient(135deg, #c084fc 0%, #090a0e 100%);
+}
+
+.project-satin {
+  background: linear-gradient(135deg, #61dafb 0%, #090a0e 100%);
+}
+
+.visual-index {
+  position: absolute;
+  top: 15px;
+  right: 25px;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 4rem;
+  color: rgba(255, 255, 255, 0.05);
+  line-height: 1;
+  z-index: 4;
+  transition: color 0.3s ease;
+}
+
+.project-card:hover .visual-index {
+  color: rgba(255, 255, 255, 0.12);
+}
+
+/* Details and Metadata Text formatting */
+.project-details-content {
+  padding: 30px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.project-card-subtitle {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  color: #707bf4;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.project-card-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 12px 0;
+  letter-spacing: -0.5px;
+  line-height: 1.25;
+}
+
+.project-card-desc {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: rgba(234, 230, 223, 0.7);
+  margin: 0 0 24px 0;
+}
+
+/* Tech Tags layout */
+.project-tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: auto; /* Push tags and actions to bottom */
+  margin-bottom: 24px;
+}
+
+.project-tech-tag {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: rgba(234, 230, 223, 0.8);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 4px 10px;
+  border-radius: 6px;
+}
+
+.project-card:hover .project-tech-tag {
+  border-color: rgba(112, 123, 244, 0.15);
+  background: rgba(112, 123, 244, 0.02);
+}
+
+/* Links & CTAs */
+.project-card-actions {
+  display: flex;
+  gap: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
+  padding-top: 20px;
+}
+
+.project-action-link {
+  position: relative;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #ffffff;
+  text-decoration: none;
+  display: inline-block;
+  padding-bottom: 4px;
+}
+
+.project-action-link:hover {
+  color: #707bf4;
+}
+
+.action-underline {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background-color: #707bf4;
+  transition: width 0.3s ease;
+}
+
+.project-action-link:hover .action-underline {
+  width: 100%;
+}

@@ -1,0 +1,171 @@
+.contact-section {
+  position: relative;
+  z-index: 20;
+  background-color: #090a0e;
+  width: 100%;
+  padding: 120px 0 60px;
+  box-sizing: border-box;
+}
+
+.contact-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+  box-sizing: border-box;
+
+  @media (max-width: 768px) {
+    padding: 0 24px;
+  }
+}
+
+/* Header */
+.contact-header {
+  text-align: center;
+  margin-bottom: 64px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contact-eyebrow {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 3px;
+  color: #707bf4;
+  margin-bottom: 8px;
+}
+
+.contact-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 4.5rem;
+  color: #ffffff;
+  margin: 0;
+  line-height: 1;
+  letter-spacing: -0.5px;
+
+  @media (max-width: 768px) {
+    font-size: 3rem;
+  }
+}
+
+.contact-header-line {
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #707bf4, transparent);
+  margin-top: 12px;
+  margin-bottom: 20px;
+}
+
+.contact-subtitle {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1rem;
+  color: rgba(234, 230, 223, 0.5);
+  max-width: 480px;
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* Cards grid */
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  max-width: 760px;
+  margin: 0 auto;
+
+  @media (max-width: 600px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.contact-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 22px;
+  background: rgba(255, 255, 255, 0.015);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 18px;
+  text-decoration: none;
+  transition: background 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+}
+
+.contact-card:hover {
+  background: rgba(112, 123, 244, 0.07);
+  border-color: rgba(112, 123, 244, 0.3);
+  transform: translateY(-4px);
+}
+
+.contact-card-icon {
+  width: 44px;
+  height: 44px;
+  background: rgba(112, 123, 244, 0.1);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: #707bf4;
+  transition: background 0.25s ease;
+}
+
+.contact-card:hover .contact-card-icon {
+  background: rgba(112, 123, 244, 0.2);
+}
+
+.contact-card-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.contact-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  flex: 1;
+  min-width: 0;
+}
+
+.contact-card-label {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  color: #707bf4;
+  text-transform: uppercase;
+}
+
+.contact-card-value {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.9rem;
+  color: rgba(234, 230, 223, 0.75);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.contact-card-arrow {
+  width: 16px;
+  height: 16px;
+  stroke: rgba(234, 230, 223, 0.2);
+  flex-shrink: 0;
+  transition: stroke 0.25s ease, transform 0.25s ease;
+}
+
+.contact-card:hover .contact-card-arrow {
+  stroke: #707bf4;
+  transform: translate(3px, -3px);
+}
+
+/* Footer */
+.contact-footer {
+  text-align: center;
+  margin-top: 80px;
+  padding-top: 32px;
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.85rem;
+  color: rgba(234, 230, 223, 0.25);
+}
