@@ -29,25 +29,22 @@ const FALLBACK = [
     description: 'A telemetry platform streaming patient vitals from ambulances to hospitals with under 2s latency. Features a multilingual AI assistant supporting 3+ languages and an automated hospital-matching engine.',
     tech: ['MERN Stack', 'WebSockets', 'LLMs'],
     codeLink: 'https://github.com/Shloka-Pai/JeevanSetu',
-    liveLink: '#',
     visualClass: 'project-satin'
   },
   {
     title: 'Academic Assistant',
     subtitle: 'Academic Assistant platform',
-    description: 'A fully dynamic MERN-stack portfolio with a custom gooey cursor, animated timeline, carousel project showcase, and a MongoDB-backed CMS for managing all content without touching code.',
+    description: 'This project is built using Django and serves as an Academic Assistant platform designed to help students manage and access academic information efficiently.',
     tech: ['React', 'Node.js', 'MongoDB', 'Express'],
-    codeLink: 'https://github.com/Shloka-Pai/Portfolio_Website',
-    liveLink: '#',
+    codeLink: 'https://github.com/Shloka-Pai/Academic-Assistant',
     visualClass: 'project-extra1'
   },
   {
-    title: 'DSA Visualizer',
-    subtitle: 'Algorithm Learning Tool',
-    description: 'An interactive web app that animates sorting, searching, and graph traversal algorithms step-by-step. Helps students understand time complexity through real-time visual feedback and speed controls.',
-    tech: ['React', 'JavaScript', 'CSS Animations'],
-    codeLink: 'https://github.com/Shloka-Pai',
-    liveLink: '#',
+    title: 'Expense Tracker',
+    subtitle: 'Console Based Application',
+    description: 'The application allows users to efficiently manage their daily expenses by performing CRUD (Create, Read, Update, Delete) operations. Hibernate is used for object-relational mapping, making database interactions simpler and more efficient.',
+    tech: ['Java', 'JavaScript'],
+    codeLink: 'https://github.com/Shloka-Pai/Expense_Tracker',
     visualClass: 'project-extra2'
   },
 ];
