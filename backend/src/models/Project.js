@@ -7,6 +7,10 @@ const projectSchema = new mongoose.Schema(
       required: true,
       trim: true
     },
+    subtitle: {
+      type: String,
+      default: ''
+    },
     description: {
       type: String,
       required: true

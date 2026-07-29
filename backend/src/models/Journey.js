@@ -39,6 +39,10 @@ const journeySchema = new mongoose.Schema(
     order: {
       type: Number,    // controls display order on timeline
       default: 0
+    },
+    tags: {
+      type: [String],
+      default: []
     }
   },
   {

@@ -1,52 +1,68 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { api } from '../api';
 import './Projects.css';
 
-const projectsList = [
+const visualClasses = ['project-neurosketch', 'project-synapse', 'project-satin'];
+
+const FALLBACK = [
   {
-    title: 'Slouch Detector',
-    subtitle: 'Real-time Doodling to Generative Art',
-    description: 'An interactive canvas dashboard leveraging Generative Adversarial Networks (GANs) to transform hand-drawn sketches into high-fidelity stylized artwork instantaneously.',
-    tech: ['PyTorch', 'React', 'FastAPI', 'Canvas API'],
-    codeLink: 'https://github.com',
-    liveLink: 'https://demo.com',
-    visualClass: 'project-neurosketch'
-  },
-  {
-    title: 'Crows Pulse',
-    subtitle: 'Browser-Based Neural Net Designer',
-    description: 'A visual flow node editor allowing users to assemble, compile, and train custom neural networks in the browser with real-time backpropagation gradient descent visualizations.',
-    tech: ['TensorFlow.js', 'React Flow', 'Web Workers'],
-    codeLink: 'https://github.com',
-    liveLink: 'https://demo.com',
-    visualClass: 'project-synapse'
-  },
-  {
-    title: 'JeevanSetu',
-    subtitle: 'Creative WebGL Graphics Sandbox',
-    description: 'A performance-oriented creative graphics library featuring physics-based fluid simulation grids, custom GPU noise fields, and interactive multi-layered liquid cursor trails.',
-    tech: ['Three.js', 'GLSL', 'Vite', 'HTML5 Canvas'],
-    codeLink: 'https://github.comhttps://github.com/Shloka-Pai/JeevanSetu',
-    liveLink: 'https://demo.com',
-    visualClass: 'project-satin'
-  }
+  title: 'Slouch Detector',
+  subtitle: 'Real-time Posture Detection',
+  description: 'A real-time computer vision system that monitors posture via webcam, achieving 90%+ detection accuracy at 25+ FPS. Features a custom calibration algorithm that reduced false-positive alerts by 30% across diverse body types and camera angles.',
+  tech: ['Python', 'MediaPipe', 'OpenCV'],
+  codeLink: 'https://github.com/Shloka-Pai/Slouch-detector-PBL-',
+  visualClass: 'project-neurosketch'
+},
+{
+  title: 'CrowdPulse',
+  subtitle: 'Real-Time Crowd Monitoring System',
+  description: 'A crowd monitoring platform that processes live video streams at 15+ FPS to detect high-density zones with 85%+ accuracy using custom vision models. Includes automated SOS escalation and predictive risk scoring, cutting emergency coordination time by 40% in simulations.',
+  tech: ['MERN Stack', 'YOLO', 'Computer Vision'],
+  codeLink: 'https://github.com/Shloka-Pai/CrowdPulseNew',
+  visualClass: 'project-synapse'
+},
+{
+  title: 'Sanjeevan',
+  subtitle: 'Real-Time Healthcare Platform',
+  description: 'A telemetry platform streaming patient vitals from ambulances to hospitals with under 2s latency. Features a multilingual AI assistant supporting 3+ languages and an automated hospital-matching engine that cut manual dispatch time by 50%.',
+  tech: ['MERN Stack', 'WebSockets', 'LLMs'],
+  codeLink: 'https://github.com/Shloka-Pai/JeevanSetu',
+  visualClass: 'project-satin'
+},
 ];
 
 export default function Projects() {
+  const [projectsList, setProjectsList] = useState(FALLBACK);
+
+  useEffect(() => {
+    api.get('/api/projects')
+      .then(data => {
+        if (!Array.isArray(data) || data.length === 0) return;
+        setProjectsList(data.map((p, i) => ({
+          title: p.title,
+          subtitle: p.subtitle || '',
+          description: p.description,
+          tech: p.techStack || [],
+          codeLink: p.githubLink || '#',
+          liveLink: p.liveLink || '#',
+          visualClass: visualClasses[i % visualClasses.length],
+        })));
+      })
+      .catch(() => {});
+  }, []);
+
   return (
     <section className="projects-section" id="projects">
       <div className="projects-container">
-        {/* Section Header */}
         <div className="projects-header">
           <span className="projects-subtitle">CREATIVE PORTFOLIO</span>
-          <h2 className="projects-title">FEATURED WORK</h2>
+          <h2 className="projects-title">MY PROJECTS</h2>
           <div className="projects-header-line"></div>
         </div>
 
-        {/* Project Cards Grid */}
         <div className="projects-grid">
           {projectsList.map((project, idx) => (
             <div key={idx} className="project-card">
-              {/* Animated visual panel representing the project */}
               <div className={`project-visual-preview ${project.visualClass}`}>
                 <div className="visual-overlay"></div>
                 <div className="visual-grid-glow"></div>
@@ -88,28 +104,21 @@ export default function Projects() {
                 <span className="visual-index">0{idx + 1}</span>
               </div>
 
-              {/* Project Metadata */}
               <div className="project-details-content">
                 <span className="project-card-subtitle">{project.subtitle}</span>
                 <h3 className="project-card-title">{project.title}</h3>
                 <p className="project-card-desc">{project.description}</p>
-
-                {/* Tech Pills */}
                 <div className="project-tech-tags">
                   {project.tech.map((tag, tIdx) => (
                     <span key={tIdx} className="project-tech-tag">{tag}</span>
                   ))}
                 </div>
-
-                {/* Action Links */}
                 <div className="project-card-actions">
                   <a href={project.codeLink} target="_blank" rel="noopener noreferrer" className="project-action-link">
-                    CODEBASE
-                    <span className="action-underline"></span>
+                    CODEBASE<span className="action-underline"></span>
                   </a>
                   <a href={project.liveLink} target="_blank" rel="noopener noreferrer" className="project-action-link">
-                    LIVE DEMO
-                    <span className="action-underline"></span>
+                    LIVE DEMO<span className="action-underline"></span>
                   </a>
                 </div>
               </div>

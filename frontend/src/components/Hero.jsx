@@ -7,7 +7,12 @@ const messages = [
   "I'm open to work! DM or book a call now ✨",
   "Let's collaborate on your next project! 🚀",
   "Available for freelance & full-time roles! 💼",
-  "Looking for internship & full-time roles! 💼"
+  "Looking for internship & full-time roles! 💼",
+  "Currently hunting for my next internship 🎯",
+  "Internship-ready & full of ideas! 🧠",
+  "Say hi if you're hiring interns! 👋",
+  "Turning coffee into code, one internship at a time ☕",
+  "Building cool stuff — hire me before someone else does! ⚡",
 ];
 
 export default function Hero() {
@@ -18,7 +23,7 @@ export default function Hero() {
   useEffect(() => {
     const interval = setInterval(() => {
       setMsgIndex((prev) => (prev + 1) % messages.length);
-    }, 4000);
+    }, 1000);
     return () => clearInterval(interval);
   }, []);
 
@@ -87,7 +92,9 @@ export default function Hero() {
           </div>
 
           <p className="hero-subtitle">
-            I am a fourth year student at MIT Art Design & Technology University specializing in AI/ML, I Enjoy participating in hackathons and ahve a strog foundation in Data Structured and Algorathms
+"Hi, I'm Shloka Pai, a Computer Science student
+at MIT ADT University, Pune
+(2023–2027, CGPA 8.74), I'm passionate about full-stack development and AI."
           </p>
 
           <div className="hero-actions">

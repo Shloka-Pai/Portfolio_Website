@@ -4,8 +4,8 @@ import './ContactModal.css';
 const contacts = [
   {
     label: 'Phone',
-    value: '+91 98765 43210',
-    href: 'tel:+919876543210',
+    value: '+91 9653217932',
+    href: 'tel:+919653217932',
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6.18 6.18l.97-.97a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
@@ -14,8 +14,8 @@ const contacts = [
   },
   {
     label: 'Email',
-    value: 'shloka.pai@email.com',
-    href: 'mailto:shloka.pai@email.com',
+    value: 'shlokanikhilpai@email.com',
+    href: 'mailto:shlokanikhilpai@email.com',
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <rect x="2" y="4" width="20" height="16" rx="2" />
@@ -45,17 +45,6 @@ const contacts = [
       </svg>
     )
   },
-  {
-    label: 'LeetCode',
-    value: 'leetcode.com/u/shloka-pai',
-    href: 'https://leetcode.com/u/shloka-pai',
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M16.102 17.93l-2.697 2.607c-.466.467-1.111.662-1.823.662s-1.357-.195-1.823-.662l-4.332-4.363c-.467-.467-.702-1.15-.702-1.863s.235-1.357.702-1.824l4.319-4.38c.467-.467 1.125-.645 1.837-.645s1.357.195 1.823.662l2.697 2.606c.514.515 1.365.497 1.9-.038.535-.536.553-1.387.038-1.9l-2.609-2.519c-.756-.731-1.754-1.2-2.85-1.2H9.5c-1.1 0-2.1.47-2.85 1.2L2.318 12c-.75.73-1.2 1.73-1.2 2.83s.45 2.1 1.2 2.83l4.332 4.363c.75.73 1.75 1.2 2.85 1.2h.002c1.1 0 2.1-.47 2.85-1.2l2.609-2.52c.515-.514.497-1.365-.038-1.9-.535-.535-1.386-.552-1.9-.038z" />
-        <path d="M13.196 6.243l2.607 2.697" />
-      </svg>
-    )
-  }
 ];
 
 export default function ContactModal({ onClose }) {

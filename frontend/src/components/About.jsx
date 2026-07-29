@@ -1,9 +1,20 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import professionalImg from '../assets/professional.jpg';
 import TiltedCard from './TiltedCard';
+import { api } from '../api';
 import './About.css';
 
 export default function About() {
+  const [about, setAbout] = useState(null);
+
+  useEffect(() => {
+    api.get('/api/about')
+      .then(data => setAbout(data))
+      .catch(() => {});
+  }, []);
+
+  const bio = about?.bio || `4th-Year Computer Science undergrad specializing in AI/ML. Driven by a strong foundation in Data Structures & Algorithms and a passion for building intelligent, full-stack systems. I'm a National hackathon finalist (Top 20/500+ teams) | Ex-Intern @ Elite Softwares | 200+ DSA problems solved`;
+  const resumeUrl = about?.resumeUrl || '/resume.pdf';  // served from public/resume.pdf
   const techIcons = [
     {
       name: 'C',
@@ -182,12 +193,10 @@ export default function About() {
 
           {/* Right Side: Professional Details */}
           <div className="about-info-text">
-            <p>
-              <span>4th-Year Computer Science undergrad</span> specializing in <span>AI/ML</span>. Driven by a strong foundation in <span>Data Structures & Algorithms</span> and a passion for building <span>intelligent, full-stack systems</span>. I actively participate in hackathons to build real-world projects that solve complex problems and optimize solutions.
-            </p>
+            <p>{bio}</p>
 
             <a 
-              href="/resume.pdf" 
+              href={resumeUrl} 
               target="_blank" 
               rel="noopener noreferrer" 
               className="resume-btn"
