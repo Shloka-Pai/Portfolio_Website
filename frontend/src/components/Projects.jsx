@@ -47,6 +47,15 @@ const FALLBACK = [
     codeLink: 'https://github.com/Shloka-Pai/Expense_Tracker',
     visualClass: 'project-extra2'
   },
+  {
+    title: 'Academic Advisor',
+    subtitle: 'Agentic AI Web App',
+    description: 'An AI-powered advisor that recommends personalized elective subjects based on a student\'s courses taken, interests, and career path. Built with a FastAPI backend that constructs structured prompts and calls an LLM via OpenRouter, returning ranked recommendations with fit scores and reasoning.',
+    tech: ['Python', 'FastAPI', 'JavaScript', 'OpenRouter API'],
+    codeLink: 'https://github.com/Shloka-Pai/Academic_Advisor',
+    liveLink: 'https://YOUR-ACTUAL-VERCEL-URL.vercel.app',
+    visualClass: 'project-neurosketch'
+  },
 ];
 
 const svgDecorations = [
@@ -87,6 +96,13 @@ const svgDecorations = [
     <line x1="65" y1="15" x2="55" y2="65" stroke="rgba(255,255,255,0.2)" strokeWidth="1.5" strokeLinecap="round" />
   </svg>,
   // 4 — bar chart
+  <svg viewBox="0 0 120 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect x="15" y="45" width="16" height="22" rx="3" fill="rgba(255,255,255,0.15)" />
+    <rect x="38" y="30" width="16" height="37" rx="3" fill="rgba(255,255,255,0.2)" />
+    <rect x="61" y="18" width="16" height="49" rx="3" fill="rgba(255,255,255,0.25)" />
+    <rect x="84" y="35" width="16" height="32" rx="3" fill="rgba(255,255,255,0.15)" />
+    <line x1="10" y1="67" x2="110" y2="67" stroke="rgba(255,255,255,0.15)" strokeWidth="1" />
+  </svg>,
   <svg viewBox="0 0 120 80" fill="none" xmlns="http://www.w3.org/2000/svg">
     <rect x="15" y="45" width="16" height="22" rx="3" fill="rgba(255,255,255,0.15)" />
     <rect x="38" y="30" width="16" height="37" rx="3" fill="rgba(255,255,255,0.2)" />
