@@ -53,7 +53,7 @@ const FALLBACK = [
     description: 'An AI-powered advisor that recommends personalized elective subjects based on a student\'s courses taken, interests, and career path. Built with a FastAPI backend that constructs structured prompts and calls an LLM via OpenRouter, returning ranked recommendations with fit scores and reasoning.',
     tech: ['Python', 'FastAPI', 'JavaScript', 'OpenRouter API'],
     codeLink: 'https://github.com/Shloka-Pai/Academic_Advisor',
-    liveLink: 'https://your-vercel-url.vercel.app',
+    liveLink: 'https://academic-advisor-ten.vercel.app/',
     visualClass: 'project-neurosketch'
   },
 ];
